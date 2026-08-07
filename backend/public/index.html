@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Kareem — Frontend Developer portfolio. Projects, skills and contact info." />
+  <meta name="color-scheme" content="dark light" />
+  <title>Kareem — Frontend Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lexend:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="bg-decor" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="grid-overlay"></span>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner container">
+      <a href="#home" class="brand">Kareem<span class="brand-dot">.</span></a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle color theme">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button id="nav-toggle" class="icon-btn nav-burger" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">Hello, I'm</p>
+      <h1 class="hero-title reveal">
+        <span class="gradient-text">Kareem</span>
+      </h1>
+      <p class="hero-role reveal" id="hero-role">Frontend Developer</p>
+      <p class="hero-lede reveal">
+        I build fast, accessible interfaces and clean, reliable web experiences —
+        from idea to polished product.
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+      <span class="scroll-cue-dot"></span>
+    </a>
+  </header>
+
+  <main id="main-content">
+    <section id="about" class="section">
+      <div class="container">
+        <p class="section-eyebrow reveal">Get to know me</p>
+        <h2 class="section-title reveal">About</h2>
+
+        <div id="about-container" class="about-card reveal">
+          <div class="skeleton-block">
+            <div class="skeleton skeleton-line" style="width:40%"></div>
+            <div class="skeleton skeleton-line" style="width:25%"></div>
+            <div class="skeleton skeleton-line" style="width:90%"></div>
+            <div class="skeleton skeleton-line" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="section-eyebrow reveal">What I work with</p>
+        <h2 class="section-title reveal">Skills</h2>
+
+        <div id="skills-container" class="skills-grid reveal">
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+          <div class="skeleton skeleton-badge"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <p class="section-eyebrow reveal">Recent work</p>
+        <h2 class="section-title reveal">Projects</h2>
+
+        <div id="projects-container" class="projects-grid">
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+          <div class="skeleton skeleton-card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <p class="section-eyebrow">Let's talk</p>
+          <h2 class="section-title">Got a project in mind?</h2>
+          <p class="contact-lede">I'm always open to discussing new opportunities and ideas.</p>
+          <a href="mailto:hello@example.com" id="contact-email" class="btn btn-primary">
+            Say Hello
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="brand">Kareem<span class="brand-dot">.</span></a>
+      <p class="footer-note">Built with care &mdash; <span id="year"></span></p>
+      <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
