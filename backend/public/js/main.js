@@ -58,6 +58,87 @@ async function loadAbout() {
   }
 }
 
+// جيب الخبرات العملية
+async function loadExperience() {
+  const container = document.getElementById('experience-container');
+  try {
+    const res = await fetch('/api/experience');
+    const items = await res.json();
+
+    if (items.length === 0) {
+      container.innerHTML = '<p class="loading">No experience yet.</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+    items.forEach((item) => {
+      const bullets = (item.bullets || [])
+        .map((b) => `<li>${b}</li>`)
+        .join('');
+      const tech = (item.technologies || [])
+        .map((t) => `<span class="tech-tag">${t}</span>`)
+        .join('');
+
+      const el = document.createElement('div');
+      el.className = 'timeline-item';
+      el.innerHTML = `
+        <span class="timeline-dot"></span>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role">${item.role || ''}</span>
+            ${item.period ? `<span class="timeline-period">${item.period}</span>` : ''}
+          </div>
+          <p class="timeline-org">
+            ${item.company || ''}${item.company && item.location ? ' · ' : ''}
+            <span class="timeline-location">${item.location || ''}</span>
+          </p>
+          ${bullets ? `<ul class="timeline-bullets">${bullets}</ul>` : ''}
+          ${tech ? `<div class="timeline-tech">${tech}</div>` : ''}
+        </div>
+      `;
+      container.appendChild(el);
+    });
+  } catch (err) {
+    container.innerHTML = '<p class="loading">Failed to load experience.</p>';
+    console.error(err);
+  }
+}
+
+// جيب المؤهلات الدراسية
+async function loadEducation() {
+  const container = document.getElementById('education-container');
+  try {
+    const res = await fetch('/api/education');
+    const items = await res.json();
+
+    if (items.length === 0) {
+      container.innerHTML = '<p class="loading">No education yet.</p>';
+      return;
+    }
+
+    container.innerHTML = '';
+    items.forEach((item) => {
+      const el = document.createElement('div');
+      el.className = 'timeline-item';
+      el.innerHTML = `
+        <span class="timeline-dot"></span>
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role">${item.title || ''}</span>
+            ${item.period ? `<span class="timeline-period">${item.period}</span>` : ''}
+          </div>
+          ${item.institution ? `<p class="timeline-org">${item.institution}</p>` : ''}
+          ${item.description ? `<p class="timeline-desc">${item.description}</p>` : ''}
+        </div>
+      `;
+      container.appendChild(el);
+    });
+  } catch (err) {
+    container.innerHTML = '<p class="loading">Failed to load education.</p>';
+    console.error(err);
+  }
+}
+
 // حوّل مستوى المهارة لنسبة مئوية للـ progress bar
 function levelToPercent(level) {
   if (!level) return 65;
@@ -168,5 +249,7 @@ async function loadProjects() {
 
 // شغّل الكل
 loadAbout();
+loadExperience();
+loadEducation();
 loadSkills();
 loadProjects();

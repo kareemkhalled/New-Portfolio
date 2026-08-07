@@ -14,6 +14,8 @@ app.use(express.static('public')); // يقدّم ملفات الفرونت لا�
 app.use('/api/projects', require('./routes/projects'));
 app.use('/api/skills', require('./routes/skills'));
 app.use('/api/about', require('./routes/about'));
+app.use('/api/education', require('./routes/education'));
+app.use('/api/experience', require('./routes/experience'));
 app.use('/api/upload', require('./routes/upload'));
 
 // Test route — نتأكد إن السيرفر شغال

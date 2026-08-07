@@ -308,7 +308,277 @@ async function deleteSkill(id) {
   }
 }
 
+// ===== الـ Experience =====
+const addExperienceBtn = document.getElementById('add-experience-btn');
+const experienceMsg = document.getElementById('experience-msg');
+const cancelExperienceBtn = document.getElementById('cancel-edit-experience-btn');
+const experienceFormTitle = document.getElementById('experience-form-title');
+const experienceEditIdField = document.getElementById('x-edit-id');
+
+addExperienceBtn.addEventListener('click', async () => {
+  const experience = {
+    role: document.getElementById('x-role').value.trim(),
+    company: document.getElementById('x-company').value.trim(),
+    location: document.getElementById('x-location').value.trim(),
+    period: document.getElementById('x-period').value.trim(),
+    bullets: document
+      .getElementById('x-bullets')
+      .value.split('\n')
+      .map((b) => b.trim())
+      .filter((b) => b),
+    technologies: document
+      .getElementById('x-tech')
+      .value.split(',')
+      .map((t) => t.trim())
+      .filter((t) => t),
+  };
+
+  if (!experience.role) {
+    experienceMsg.textContent = 'Role is required.';
+    experienceMsg.className = 'msg error';
+    return;
+  }
+
+  const editId = experienceEditIdField.value;
+
+  try {
+    const res = await fetch(editId ? `/api/experience/${editId}` : '/api/experience', {
+      method: editId ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(experience),
+    });
+    if (!res.ok) throw new Error('Failed');
+
+    experienceMsg.textContent = editId ? 'Experience updated ✅' : 'Experience added ✅';
+    experienceMsg.className = 'msg';
+    resetExperienceForm();
+    loadExperience();
+  } catch (err) {
+    experienceMsg.textContent = 'Error saving experience.';
+    experienceMsg.className = 'msg error';
+    console.error(err);
+  }
+});
+
+cancelExperienceBtn.addEventListener('click', resetExperienceForm);
+
+function resetExperienceForm() {
+  ['x-role', 'x-company', 'x-location', 'x-period', 'x-bullets', 'x-tech'].forEach((id) => {
+    document.getElementById(id).value = '';
+  });
+  experienceEditIdField.value = '';
+  experienceFormTitle.textContent = 'Add Experience';
+  addExperienceBtn.textContent = 'Add Experience';
+  cancelExperienceBtn.style.display = 'none';
+}
+
+async function editExperience(id) {
+  try {
+    const res = await fetch('/api/experience');
+    const items = await res.json();
+    const item = items.find((i) => i._id === id);
+    if (!item) return;
+
+    document.getElementById('x-role').value = item.role || '';
+    document.getElementById('x-company').value = item.company || '';
+    document.getElementById('x-location').value = item.location || '';
+    document.getElementById('x-period').value = item.period || '';
+    document.getElementById('x-bullets').value = (item.bullets || []).join('\n');
+    document.getElementById('x-tech').value = (item.technologies || []).join(', ');
+    experienceEditIdField.value = item._id;
+
+    experienceFormTitle.textContent = 'Edit Experience';
+    addExperienceBtn.textContent = 'Update Experience';
+    cancelExperienceBtn.style.display = 'block';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function loadExperience() {
+  const list = document.getElementById('experience-list');
+  try {
+    const res = await fetch('/api/experience');
+    const items = await res.json();
+
+    if (items.length === 0) {
+      list.innerHTML = '<p class="loading">No experience yet.</p>';
+      return;
+    }
+
+    list.innerHTML = '';
+    items.forEach((item) => {
+      const el = document.createElement('div');
+      el.className = 'item';
+      el.innerHTML = `
+        <div class="item-info">
+          <h4>${item.role}</h4>
+          <p>${item.company || ''}${item.period ? ' · ' + item.period : ''}</p>
+        </div>
+        <div class="item-actions">
+          <button class="edit-btn" data-id="${item._id}">Edit</button>
+          <button class="delete-btn" data-id="${item._id}">Delete</button>
+        </div>
+      `;
+      list.appendChild(el);
+    });
+
+    document.querySelectorAll('#experience-list .edit-btn').forEach((btn) => {
+      btn.addEventListener('click', () => editExperience(btn.dataset.id));
+    });
+    document.querySelectorAll('#experience-list .delete-btn').forEach((btn) => {
+      btn.addEventListener('click', () => deleteExperience(btn.dataset.id));
+    });
+  } catch (err) {
+    list.innerHTML = '<p class="loading">Failed to load.</p>';
+    console.error(err);
+  }
+}
+
+async function deleteExperience(id) {
+  if (!confirm('Delete this experience entry?')) return;
+  try {
+    const res = await fetch(`/api/experience/${id}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error('Failed');
+    loadExperience();
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// ===== الـ Education =====
+const addEducationBtn = document.getElementById('add-education-btn');
+const educationMsg = document.getElementById('education-msg');
+const cancelEducationBtn = document.getElementById('cancel-edit-education-btn');
+const educationFormTitle = document.getElementById('education-form-title');
+const educationEditIdField = document.getElementById('e-edit-id');
+
+addEducationBtn.addEventListener('click', async () => {
+  const education = {
+    title: document.getElementById('e-title').value.trim(),
+    institution: document.getElementById('e-institution').value.trim(),
+    description: document.getElementById('e-description').value.trim(),
+    period: document.getElementById('e-period').value.trim(),
+  };
+
+  if (!education.title) {
+    educationMsg.textContent = 'Title is required.';
+    educationMsg.className = 'msg error';
+    return;
+  }
+
+  const editId = educationEditIdField.value;
+
+  try {
+    const res = await fetch(editId ? `/api/education/${editId}` : '/api/education', {
+      method: editId ? 'PUT' : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(education),
+    });
+    if (!res.ok) throw new Error('Failed');
+
+    educationMsg.textContent = editId ? 'Education updated ✅' : 'Education added ✅';
+    educationMsg.className = 'msg';
+    resetEducationForm();
+    loadEducation();
+  } catch (err) {
+    educationMsg.textContent = 'Error saving education.';
+    educationMsg.className = 'msg error';
+    console.error(err);
+  }
+});
+
+cancelEducationBtn.addEventListener('click', resetEducationForm);
+
+function resetEducationForm() {
+  ['e-title', 'e-institution', 'e-description', 'e-period'].forEach((id) => {
+    document.getElementById(id).value = '';
+  });
+  educationEditIdField.value = '';
+  educationFormTitle.textContent = 'Add Education';
+  addEducationBtn.textContent = 'Add Education';
+  cancelEducationBtn.style.display = 'none';
+}
+
+async function editEducation(id) {
+  try {
+    const res = await fetch('/api/education');
+    const items = await res.json();
+    const item = items.find((i) => i._id === id);
+    if (!item) return;
+
+    document.getElementById('e-title').value = item.title || '';
+    document.getElementById('e-institution').value = item.institution || '';
+    document.getElementById('e-description').value = item.description || '';
+    document.getElementById('e-period').value = item.period || '';
+    educationEditIdField.value = item._id;
+
+    educationFormTitle.textContent = 'Edit Education';
+    addEducationBtn.textContent = 'Update Education';
+    cancelEducationBtn.style.display = 'block';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function loadEducation() {
+  const list = document.getElementById('education-list');
+  try {
+    const res = await fetch('/api/education');
+    const items = await res.json();
+
+    if (items.length === 0) {
+      list.innerHTML = '<p class="loading">No education yet.</p>';
+      return;
+    }
+
+    list.innerHTML = '';
+    items.forEach((item) => {
+      const el = document.createElement('div');
+      el.className = 'item';
+      el.innerHTML = `
+        <div class="item-info">
+          <h4>${item.title}</h4>
+          <p>${item.institution || ''}${item.period ? ' · ' + item.period : ''}</p>
+        </div>
+        <div class="item-actions">
+          <button class="edit-btn" data-id="${item._id}">Edit</button>
+          <button class="delete-btn" data-id="${item._id}">Delete</button>
+        </div>
+      `;
+      list.appendChild(el);
+    });
+
+    document.querySelectorAll('#education-list .edit-btn').forEach((btn) => {
+      btn.addEventListener('click', () => editEducation(btn.dataset.id));
+    });
+    document.querySelectorAll('#education-list .delete-btn').forEach((btn) => {
+      btn.addEventListener('click', () => deleteEducation(btn.dataset.id));
+    });
+  } catch (err) {
+    list.innerHTML = '<p class="loading">Failed to load.</p>';
+    console.error(err);
+  }
+}
+
+async function deleteEducation(id) {
+  if (!confirm('Delete this education entry?')) return;
+  try {
+    const res = await fetch(`/api/education/${id}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error('Failed');
+    loadEducation();
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 // ===== شغّل أول تحميل =====
 loadProjects();
 loadSkills();
 loadAboutForm();
+loadExperience();
+loadEducation();
