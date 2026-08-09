@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/Project');
 
-// GET all projects — جيب كل المشاريع
+// GET all projects
 router.get('/', async (req, res) => {
   try {
     const projects = await Project.find().sort({ createdAt: -1 });
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST — أضف مشروع جديد
+// POST
 router.post('/', async (req, res) => {
   try {
     const project = await Project.create(req.body);
@@ -22,11 +22,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT — عدّل مشروع بالـ id
+// PUT
 router.put('/:id', async (req, res) => {
   try {
     const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,            // يرجّع النسخة الجديدة بعد التعديل
+      new: true,
       runValidators: true,
     });
     if (!project) return res.status(404).json({ error: 'Project not found' });
@@ -36,7 +36,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE — امسح مشروع
+// DELETE
 router.delete('/:id', async (req, res) => {
   try {
     const project = await Project.findByIdAndDelete(req.params.id);

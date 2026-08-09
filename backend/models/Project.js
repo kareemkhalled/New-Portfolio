@@ -6,7 +6,7 @@ const projectSchema = new mongoose.Schema({
   imageUrl: { type: String },
   liveUrl: { type: String },
   githubUrl: { type: String },
-  technologies: [String],   // مصفوفة زي ["React", "Node.js"]
-}, { timestamps: true });    // بيضيف createdAt و updatedAt تلقائي
+  technologies: [String],
+}, { timestamps: true });
 
 module.exports = mongoose.model('Project', projectSchema);

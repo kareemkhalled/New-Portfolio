@@ -28,15 +28,13 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 },   // أقصى حجم 5 ميجا
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
-// endpoint الرفع
 router.post('/', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  // رجّع المسار اللي الفرونت هيستخدمه
   res.json({ imageUrl: `/uploads/${req.file.filename}` });
 });
 

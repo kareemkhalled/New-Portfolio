@@ -7,8 +7,8 @@ const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json());          // يخلي السيرفر يفهم الـ JSON
-app.use(express.static('public')); // يقدّم ملفات الفرونت لاحقاً
+app.use(express.json());
+app.use(express.static('public'));
 
 // Routes
 app.use('/api/projects', require('./routes/projects'));
@@ -18,7 +18,7 @@ app.use('/api/education', require('./routes/education'));
 app.use('/api/experience', require('./routes/experience'));
 app.use('/api/upload', require('./routes/upload'));
 
-// Test route — نتأكد إن السيرفر شغال
+// Test route
 app.get('/', (req, res) => {
   res.json({ message: 'Portfolio API is running' });
 });

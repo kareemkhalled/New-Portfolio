@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Education = require('../models/Education');
 
-// GET all education entries — جيب كل السجلات
+// GET all education entries
 router.get('/', async (req, res) => {
   try {
     const education = await Education.find().sort({ order: 1, createdAt: 1 });
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST — أضف سجل تعليمي جديد
+// POST
 router.post('/', async (req, res) => {
   try {
     const education = await Education.create(req.body);
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT — عدّل سجل بالـ id
+// PUT
 router.put('/:id', async (req, res) => {
   try {
     const education = await Education.findByIdAndUpdate(req.params.id, req.body, {
@@ -36,7 +36,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE — امسح سجل
+// DELETE
 router.delete('/:id', async (req, res) => {
   try {
     const education = await Education.findByIdAndDelete(req.params.id);

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Experience = require('../models/Experience');
 
-// GET all experience entries — جيب كل السجلات
+// GET all experience entries
 router.get('/', async (req, res) => {
   try {
     const experience = await Experience.find().sort({ order: 1, createdAt: 1 });
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST — أضف خبرة جديدة
+// POST
 router.post('/', async (req, res) => {
   try {
     const experience = await Experience.create(req.body);
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// PUT — عدّل خبرة بالـ id
+// PUT
 router.put('/:id', async (req, res) => {
   try {
     const experience = await Experience.findByIdAndUpdate(req.params.id, req.body, {
@@ -36,7 +36,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// DELETE — امسح خبرة
+// DELETE
 router.delete('/:id', async (req, res) => {
   try {
     const experience = await Experience.findByIdAndDelete(req.params.id);

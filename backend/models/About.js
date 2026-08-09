@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const aboutSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  title: { type: String },        // زي "Frontend Developer"
+  title: { type: String },
   bio: { type: String },
   email: { type: String },
   photoUrl: { type: String },

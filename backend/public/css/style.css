@@ -883,17 +883,18 @@ button {
 }
 
 .project-img-wrap {
-  margin: -26px -26px 18px;
+  margin: -10px;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   aspect-ratio: 16 / 10;
-  background: var(--surface-strong);
+  /* background: var(--surface-strong); */
+  /* padding: 10px; */
 }
 
 .project-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: full;
+  height: full;
+  object-fit: contain;
   transition: transform 0.5s var(--ease);
 }
 

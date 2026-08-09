@@ -1,4 +1,3 @@
-// جيب بيانات الـ about
 function initials(name) {
   return (name || '')
     .split(' ')
@@ -58,7 +57,6 @@ async function loadAbout() {
   }
 }
 
-// جيب الخبرات العملية
 async function loadExperience() {
   const container = document.getElementById('experience-container');
   try {
@@ -104,7 +102,6 @@ async function loadExperience() {
   }
 }
 
-// جيب المؤهلات الدراسية
 async function loadEducation() {
   const container = document.getElementById('education-container');
   try {
@@ -139,7 +136,6 @@ async function loadEducation() {
   }
 }
 
-// حوّل مستوى المهارة لنسبة مئوية للـ progress bar
 function levelToPercent(level) {
   if (!level) return 65;
   const numeric = parseInt(level, 10);
@@ -157,7 +153,6 @@ function levelToPercent(level) {
   return map[level.toLowerCase().trim()] || 70;
 }
 
-// جيب الـ skills
 async function loadSkills() {
   const container = document.getElementById('skills-container');
   try {
@@ -193,7 +188,6 @@ async function loadSkills() {
   }
 }
 
-// جيب المشاريع
 async function loadProjects() {
   const container = document.getElementById('projects-container');
   try {
@@ -247,7 +241,6 @@ async function loadProjects() {
   }
 }
 
-// شغّل الكل
 loadAbout();
 loadExperience();
 loadEducation();

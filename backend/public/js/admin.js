@@ -1,11 +1,9 @@
-// ===== عناصر فورم المشاريع =====
 const addBtn = document.getElementById('add-project-btn');
 const msg = document.getElementById('project-msg');
 const cancelBtn = document.getElementById('cancel-edit-btn');
 const formTitle = document.getElementById('project-form-title');
 const editIdField = document.getElementById('p-edit-id');
 
-// ===== إضافة / تعديل مشروع =====
 addBtn.addEventListener('click', async () => {
   const project = {
     title: document.getElementById('p-title').value.trim(),
@@ -24,7 +22,6 @@ addBtn.addEventListener('click', async () => {
     return;
   }
 
-  // لو فيه صورة مختارة، ارفعها الأول وخُد الرابط
   const imageFile = document.getElementById('p-image').files[0];
   if (imageFile) {
     try {
@@ -33,7 +30,7 @@ addBtn.addEventListener('click', async () => {
 
       const uploadRes = await fetch('/api/upload', {
         method: 'POST',
-        body: formData,        // مفيش Content-Type — المتصفح بيحطه لوحده
+        body: formData,
       });
 
       if (!uploadRes.ok) throw new Error('Upload failed');
@@ -46,7 +43,7 @@ addBtn.addEventListener('click', async () => {
     }
   }
 
-  const editId = editIdField.value;   // فاضي = إضافة، فيه id = تعديل
+  const editId = editIdField.value;
 
   try {
     let res;
@@ -75,20 +72,17 @@ addBtn.addEventListener('click', async () => {
   }
 });
 
-// زرار الإلغاء
 cancelBtn.addEventListener('click', resetProjectForm);
 
-// رجّع الفورم لوضع الإضافة
 function resetProjectForm() {
   clearForm();
   editIdField.value = '';
   formTitle.textContent = 'Add Project';
   addBtn.textContent = 'Add Project';
   cancelBtn.style.display = 'none';
-  document.getElementById('p-image').value = '';   // فرّغ حقل الصورة
+  document.getElementById('p-image').value = '';
 }
 
-// حمّل مشروع في الفورم للتعديل
 async function editProject(id) {
   try {
     const res = await fetch('/api/projects');
@@ -113,7 +107,6 @@ async function editProject(id) {
   }
 }
 
-// ===== عرض المشاريع =====
 async function loadProjects() {
   const list = document.getElementById('projects-list');
   try {
@@ -154,7 +147,6 @@ async function loadProjects() {
   }
 }
 
-// ===== مسح مشروع =====
 async function deleteProject(id) {
   if (!confirm('Delete this project?')) return;
   try {
@@ -166,7 +158,6 @@ async function deleteProject(id) {
   }
 }
 
-// ===== دوال مساعدة للمشاريع =====
 function showMsg(text, isError) {
   msg.textContent = text;
   msg.className = isError ? 'msg error' : 'msg';
@@ -178,7 +169,6 @@ function clearForm() {
   });
 }
 
-// ===== الـ About =====
 const saveAboutBtn = document.getElementById('save-about-btn');
 const aboutMsg = document.getElementById('about-msg');
 
@@ -226,7 +216,6 @@ saveAboutBtn.addEventListener('click', async () => {
   }
 });
 
-// ===== الـ Skills =====
 const addSkillBtn = document.getElementById('add-skill-btn');
 const skillMsg = document.getElementById('skill-msg');
 
@@ -308,7 +297,6 @@ async function deleteSkill(id) {
   }
 }
 
-// ===== الـ Experience =====
 const addExperienceBtn = document.getElementById('add-experience-btn');
 const experienceMsg = document.getElementById('experience-msg');
 const cancelExperienceBtn = document.getElementById('cancel-edit-experience-btn');
@@ -448,7 +436,6 @@ async function deleteExperience(id) {
   }
 }
 
-// ===== الـ Education =====
 const addEducationBtn = document.getElementById('add-education-btn');
 const educationMsg = document.getElementById('education-msg');
 const cancelEducationBtn = document.getElementById('cancel-edit-education-btn');
@@ -576,7 +563,6 @@ async function deleteEducation(id) {
   }
 }
 
-// ===== شغّل أول تحميل =====
 loadProjects();
 loadSkills();
 loadAboutForm();
