@@ -1,0 +1,12 @@
+@if(myProject){
+<div class="card mb-2 p-2">
+    <h3>{{myProject.title}}</h3>
+    <p>{{myProject.description}}</p>
+    @if(myProject.imageUrl){
+      <img [src]="myProject.imageUrl" alt="" width="150">
+    }
+    <p>Tech: {{myProject.technologies?.join(', ')}}</p>
+
+    <button (click)="delete()" class="btn btn-danger">Delete</button>
+</div>
+}

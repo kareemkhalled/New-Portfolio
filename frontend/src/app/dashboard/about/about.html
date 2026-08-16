@@ -1,0 +1,17 @@
+<div class="container">
+<h1>Edit About</h1>
+
+@if(about){
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+
+    name: <input type="text" [ngModel]="about.name" name="name"> <br>
+    title: <input type="text" [ngModel]="about.title" name="title"> <br>
+    bio: <textarea [ngModel]="about.bio" name="bio"></textarea> <br>
+    email: <input type="text" [ngModel]="about.email" name="email"> <br>
+    photoUrl: <input type="text" [ngModel]="about.photoUrl" name="photoUrl"> <br>
+
+    <button class="btn btn-primary">Save</button>
+
+</form>
+}
+</div>

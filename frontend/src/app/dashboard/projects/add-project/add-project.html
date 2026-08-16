@@ -1,0 +1,14 @@
+<h2>Add project </h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+title: <input type="text" formControlName="title"> <br>
+description: <input type="text" formControlName="description"> <br>
+live url: <input type="text" formControlName="liveUrl"> <br>
+github url: <input type="text" formControlName="githubUrl"> <br>
+technologies (comma separated): <input type="text" formControlName="technologies"> <br>
+image : <input type="file" (change)="onFileChange($event)"> <br>
+
+<button type="submit" class="btn btn-primary">Add project</button>
+
+</form>

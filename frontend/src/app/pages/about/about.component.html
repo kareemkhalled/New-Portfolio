@@ -1,0 +1,7 @@
+<div *ngIf="about">
+  <img *ngIf="about.photoUrl" [src]="about.photoUrl" [alt]="about.name" class="about-photo" />
+  <h1>{{ about.name }}</h1>
+  <h2 *ngIf="about.title">{{ about.title }}</h2>
+  <p *ngIf="about.bio">{{ about.bio }}</p>
+  <p *ngIf="about.email">Email: {{ about.email }}</p>
+</div>

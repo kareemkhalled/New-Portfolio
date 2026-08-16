@@ -1,0 +1,19 @@
+<h1>Experience</h1>
+
+<div class="entry" *ngFor="let job of experience">
+  <h2>{{ job.role }}<span *ngIf="job.company"> — {{ job.company }}</span></h2>
+  <p *ngIf="job.period">{{ job.period }}</p>
+  <p *ngIf="job.location">{{ job.location }}</p>
+  <ul *ngIf="job.bullets?.length">
+    <li *ngFor="let bullet of job.bullets">{{ bullet }}</li>
+  </ul>
+</div>
+
+<h1>Education</h1>
+
+<div class="entry" *ngFor="let edu of education">
+  <h2>{{ edu.title }}</h2>
+  <p *ngIf="edu.institution">{{ edu.institution }}</p>
+  <p *ngIf="edu.period">{{ edu.period }}</p>
+  <p *ngIf="edu.description">{{ edu.description }}</p>
+</div>

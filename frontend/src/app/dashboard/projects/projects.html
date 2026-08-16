@@ -1,0 +1,11 @@
+<div class="container">
+<h1>Projects</h1>
+
+<app-add-project (doAdd)="loadProjects()"></app-add-project>
+
+<hr>
+
+@for(project of projects; track project){
+  <app-project-item [myProject]="project" (doDelete)="loadProjects()"></app-project-item>
+}
+</div>

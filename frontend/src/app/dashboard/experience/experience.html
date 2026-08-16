@@ -1,0 +1,28 @@
+<div class="container">
+<h1>Experience</h1>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+role: <input type="text" formControlName="role"> <br>
+company: <input type="text" formControlName="company"> <br>
+location: <input type="text" formControlName="location"> <br>
+period: <input type="text" formControlName="period"> <br>
+bullets (comma separated): <input type="text" formControlName="bullets"> <br>
+technologies (comma separated): <input type="text" formControlName="technologies"> <br>
+
+<button type="submit" class="btn btn-primary">add experience</button>
+
+</form>
+
+<hr>
+
+<ul class="list-group">
+@for(job of experience; track job){
+  <li class="list-group-item">
+    <h5>{{job.role}} @if(job.company){ — {{job.company}} }</h5>
+    @if(job.period){ <p>{{job.period}}</p> }
+    <button (click)="delete(job._id!)" class="btn btn-sm btn-danger">Delete</button>
+  </li>
+}
+</ul>
+</div>

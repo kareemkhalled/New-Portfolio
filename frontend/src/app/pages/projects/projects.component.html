@@ -1,0 +1,13 @@
+<h1>Projects</h1>
+
+<div class="project-list">
+  <div class="project-card" *ngFor="let project of projects">
+    <h2>{{ project.title }}</h2>
+    <p>{{ project.description }}</p>
+    <p *ngIf="project.technologies?.length">
+      <strong>Tech:</strong> {{ project.technologies?.join(', ') }}
+    </p>
+    <a *ngIf="project.liveUrl" [href]="project.liveUrl" target="_blank">Live Demo</a>
+    <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank">GitHub</a>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+<h1>Skills</h1>
+
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+
+    name: <input type="text" ngModel name="name"> <br>
+    level: <input type="text" ngModel name="level"> <br>
+    category: <input type="text" ngModel name="category"> <br>
+    <button class="btn btn-primary">add skill</button>
+
+</form>
+
+<hr>
+
+<ul class="list-group">
+@for(skill of skills; track skill){
+  <li class="list-group-item">
+    {{skill.name}}
+    @if(skill.level){ — {{skill.level}} }
+    @if(skill.category){ ({{skill.category}}) }
+    <button (click)="delete(skill._id!)" class="btn btn-sm btn-danger">Delete</button>
+  </li>
+}
+</ul>
+</div>

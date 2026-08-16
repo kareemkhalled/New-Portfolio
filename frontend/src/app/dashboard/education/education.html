@@ -1,0 +1,26 @@
+<div class="container">
+<h1>Education</h1>
+
+<form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+
+    title: <input type="text" ngModel name="title"> <br>
+    institution: <input type="text" ngModel name="institution"> <br>
+    period: <input type="text" ngModel name="period"> <br>
+    description: <textarea ngModel name="description"></textarea> <br>
+    <button class="btn btn-primary">add education</button>
+
+</form>
+
+<hr>
+
+<ul class="list-group">
+@for(edu of education; track edu){
+  <li class="list-group-item">
+    <h5>{{edu.title}}</h5>
+    @if(edu.institution){ <p>{{edu.institution}}</p> }
+    @if(edu.period){ <p>{{edu.period}}</p> }
+    <button (click)="delete(edu._id!)" class="btn btn-sm btn-danger">Delete</button>
+  </li>
+}
+</ul>
+</div>
