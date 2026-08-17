@@ -1,9 +1,14 @@
-<h1>Skills</h1>
+<section class="page">
+  <p class="eyebrow fade-up">Toolbox</p>
+  <h1 class="fade-up">Skills</h1>
 
-<ul class="skill-list">
-  <li *ngFor="let skill of skills">
-    {{ skill.name }}
-    <span *ngIf="skill.level"> — {{ skill.level }}</span>
-    <span *ngIf="skill.category"> ({{ skill.category }})</span>
-  </li>
-</ul>
+  <div class="skill-chips">
+    <div class="chip fade-up" *ngFor="let skill of skills; let i = index" [style.animation-delay.ms]="i * 60">
+      <span class="chip-name">{{ skill.name }}</span>
+      <span class="chip-level" *ngIf="skill.level">{{ skill.level }}</span>
+      <span class="chip-category" *ngIf="skill.category">{{ skill.category }}</span>
+    </div>
+  </div>
+
+  <p class="empty-state" *ngIf="!skills?.length">No skills added yet.</p>
+</section>

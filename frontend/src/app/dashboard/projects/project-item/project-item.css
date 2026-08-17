@@ -1,0 +1,18 @@
+.card {
+  padding: 1.2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+}
+
+.card img {
+  border-radius: var(--radius-sm);
+  margin: 0.5rem 0;
+  display: block;
+}

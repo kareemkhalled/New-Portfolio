@@ -1,19 +1,37 @@
-<h1>Experience</h1>
+<section class="page">
+  <p class="eyebrow fade-up">Journey</p>
+  <h1 class="fade-up">Experience</h1>
 
-<div class="entry" *ngFor="let job of experience">
-  <h2>{{ job.role }}<span *ngIf="job.company"> — {{ job.company }}</span></h2>
-  <p *ngIf="job.period">{{ job.period }}</p>
-  <p *ngIf="job.location">{{ job.location }}</p>
-  <ul *ngIf="job.bullets?.length">
-    <li *ngFor="let bullet of job.bullets">{{ bullet }}</li>
-  </ul>
-</div>
+  <div class="timeline">
+    <div class="timeline-item fade-up" *ngFor="let job of experience; let i = index" [style.animation-delay.ms]="i * 90">
+      <div class="dot"></div>
+      <div class="timeline-content">
+        <h2>{{ job.role }}<span class="company" *ngIf="job.company"> — {{ job.company }}</span></h2>
+        <p class="meta" *ngIf="job.period || job.location">
+          <span *ngIf="job.period">{{ job.period }}</span>
+          <span *ngIf="job.location"> · {{ job.location }}</span>
+        </p>
+        <ul *ngIf="job.bullets?.length">
+          <li *ngFor="let bullet of job.bullets">{{ bullet }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-<h1>Education</h1>
+  <p class="eyebrow fade-up" style="margin-top: 3.5rem;">Background</p>
+  <h1 class="fade-up">Education</h1>
 
-<div class="entry" *ngFor="let edu of education">
-  <h2>{{ edu.title }}</h2>
-  <p *ngIf="edu.institution">{{ edu.institution }}</p>
-  <p *ngIf="edu.period">{{ edu.period }}</p>
-  <p *ngIf="edu.description">{{ edu.description }}</p>
-</div>
+  <div class="timeline">
+    <div class="timeline-item fade-up" *ngFor="let edu of education; let i = index" [style.animation-delay.ms]="i * 90">
+      <div class="dot"></div>
+      <div class="timeline-content">
+        <h2>{{ edu.title }}</h2>
+        <p class="meta" *ngIf="edu.institution || edu.period">
+          <span *ngIf="edu.institution">{{ edu.institution }}</span>
+          <span *ngIf="edu.period"> · {{ edu.period }}</span>
+        </p>
+        <p *ngIf="edu.description">{{ edu.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
