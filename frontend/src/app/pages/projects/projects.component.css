@@ -78,12 +78,13 @@
 }
 
 .tech-list li {
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 0.76rem;
-  font-weight: 600;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
+  background: var(--accent-2);
+  color: #04121c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--radius-sm);
 }
 
 .project-links {

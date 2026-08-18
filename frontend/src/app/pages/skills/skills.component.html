@@ -2,11 +2,12 @@
   <p class="eyebrow fade-up">Toolbox</p>
   <h1 class="fade-up">Skills</h1>
 
-  <div class="skill-chips">
-    <div class="chip fade-up" *ngFor="let skill of skills; let i = index" [style.animation-delay.ms]="i * 60">
-      <span class="chip-name">{{ skill.name }}</span>
-      <span class="chip-level" *ngIf="skill.level">{{ skill.level }}</span>
-      <span class="chip-category" *ngIf="skill.category">{{ skill.category }}</span>
+  <div class="skill-groups">
+    <div class="skill-group fade-up" *ngFor="let group of groupedSkills; let i = index" [style.animation-delay.ms]="i * 60">
+      <h2 class="group-title">{{ group.category }}</h2>
+      <div class="group-chips">
+        <span class="chip" *ngFor="let skill of group.skills">{{ skill.name }}</span>
+      </div>
     </div>
   </div>
 

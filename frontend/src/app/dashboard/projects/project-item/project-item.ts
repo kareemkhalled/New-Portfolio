@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IProject } from '../../../models/project.model';
+import { IProject } from '../../../core/services/models/project.model';
 import { ProjectService } from '../../../core/services/project-service';
 
 @Component({

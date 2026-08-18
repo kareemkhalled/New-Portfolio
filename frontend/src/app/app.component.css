@@ -2,8 +2,6 @@
   display: block;
 }
 
-/* ---------- Sidebar ---------- */
-
 .sidebar {
   position: fixed;
   inset: 0 auto 0 0;
@@ -97,8 +95,6 @@
   color: var(--accent);
 }
 
-/* ---------- Mobile toggle ---------- */
-
 .menu-toggle {
   position: fixed;
   top: 1.1rem;
@@ -136,8 +132,6 @@
   backdrop-filter: blur(2px);
   z-index: 35;
 }
-
-/* ---------- Content ---------- */
 
 main.with-sidebar {
   margin-left: var(--sidebar-w);

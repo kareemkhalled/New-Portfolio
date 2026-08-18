@@ -1,38 +1,34 @@
-/* ==========================================================================
-   Design system — dark, professional portfolio theme
-   ========================================================================== */
-
 :root {
-  --bg: #0a0e14;
-  --bg-elevated: #0d1219;
-  --surface: #121826;
-  --surface-2: #171f30;
-  --border: #232c3d;
-  --border-soft: #1a2233;
+  --bg: #070b21;
+  --bg-elevated: #0a0f2b;
+  --surface: #10163a;
+  --surface-2: #161c46;
+  --border: #262d5c;
+  --border-soft: #1a2049;
 
-  --text: #e7ecf5;
-  --text-muted: #8b96a8;
-  --text-dim: #5c6779;
+  --text: #eef1fb;
+  --text-muted: #a2a9c9;
+  --text-dim: #6870a0;
 
-  --accent: #22d3ee;
-  --accent-2: #38bdf8;
-  --accent-soft: rgba(34, 211, 238, 0.12);
-  --accent-glow: rgba(34, 211, 238, 0.35);
+  --accent: #2fe0ae;
+  --accent-2: #3fd0ea;
+  --accent-soft: rgba(47, 224, 174, 0.14);
+  --accent-glow: rgba(47, 224, 174, 0.35);
 
   --danger: #f87171;
   --danger-soft: rgba(248, 113, 113, 0.12);
-  --success: #34d399;
+  --success: #2fe0ae;
 
-  --radius-sm: 8px;
-  --radius: 14px;
-  --radius-lg: 22px;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
 
-  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+  --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 25px 60px -15px rgba(0, 0, 0, 0.65);
 
   --sidebar-w: 250px;
 
-  --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+  --font-heading: 'IBM Plex Sans', 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Segoe UI', sans-serif;
   --font-mono: 'Fira Code', monospace;
 }
@@ -52,6 +48,17 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  z-index: 200;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,10 +98,6 @@ a {
   background: var(--border);
 }
 
-/* ==========================================================================
-   Shared animations
-   ========================================================================== */
-
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: translateY(0); }
@@ -129,19 +132,11 @@ a {
   animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ==========================================================================
-   Layout containers used by public + admin pages
-   ========================================================================== */
-
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
-
-/* ==========================================================================
-   Buttons — recolors Bootstrap's .btn classes used throughout the admin
-   ========================================================================== */
 
 .btn {
   font-family: var(--font-body);
@@ -185,10 +180,6 @@ a {
   padding: 0.35rem 0.8rem;
   font-size: 0.8rem;
 }
-
-/* ==========================================================================
-   Forms — used by every admin CRUD page
-   ========================================================================== */
 
 form {
   background: var(--surface);
@@ -239,10 +230,6 @@ input[type="file"] {
   padding: 0.45rem;
   color: var(--text-muted);
 }
-
-/* ==========================================================================
-   Cards / lists — Bootstrap .card and .list-group used in the admin
-   ========================================================================== */
 
 .card {
   background: var(--surface) !important;

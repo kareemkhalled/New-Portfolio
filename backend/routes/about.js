@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// PUT — upsert
+// PUT
 router.put('/', async (req, res) => {
   try {
     const about = await About.findOneAndUpdate({}, req.body, {

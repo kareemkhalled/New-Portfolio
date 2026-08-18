@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectService } from '../../core/services/project-service';
-import { IProject } from '../../models/project.model';
+import { IProject } from '../../core/services/models/project.model';
 
 @Component({
   selector: 'app-projects',

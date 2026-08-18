@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { SkillService } from '../../core/services/skill-service';
-import { ISkill } from '../../models/skill.model';
+import { ISkill } from '../../core/services/models/skill.model';
 
 @Component({
   selector: 'app-skills',

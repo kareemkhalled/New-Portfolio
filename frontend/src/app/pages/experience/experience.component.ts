@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExperienceService } from '../../core/services/experience-service';
 import { EducationService } from '../../core/services/education-service';
-import { IExperience } from '../../models/experience.model';
-import { IEducation } from '../../models/education.model';
+import { IExperience } from '../../core/services/models/experience.model';
+import { IEducation } from '../../core/services/models/education.model';
 
 @Component({
   selector: 'app-experience',

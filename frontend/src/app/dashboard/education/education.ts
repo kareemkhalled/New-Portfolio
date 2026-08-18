@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EducationService } from '../../core/services/education-service';
-import { IEducation } from '../../models/education.model';
+import { IEducation } from '../../core/services/models/education.model';
 
 @Component({
   selector: 'app-education',

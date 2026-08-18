@@ -3,13 +3,16 @@
 }
 
 .hero {
+  height: 100vh;
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
-  padding: 4rem clamp(1.5rem, 5vw, 5rem);
+  gap: 2rem;
+  padding: 1.5rem clamp(1.5rem, 5vw, 5rem);
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .hero-text {
@@ -19,36 +22,33 @@
 
 .eyebrow {
   color: var(--text-muted);
-  font-size: 1.05rem;
-  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
 }
 
 .name {
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
   font-weight: 700;
-  margin-bottom: 0.6rem;
-  background: linear-gradient(120deg, var(--text) 40%, var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.4rem;
+  color: var(--accent);
 }
 
 .role-line {
-  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
   font-weight: 600;
   color: var(--text);
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.6rem;
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
 }
 
 .typewriter {
-  color: var(--accent);
+  color: var(--text);
   font-weight: 700;
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid var(--accent);
+  border-right: 2px solid var(--accent-2);
   display: inline-block;
   animation:
     typing 1.6s steps(var(--chars, 20), end) 0.6s both,
@@ -68,8 +68,8 @@
   gap: 0.55rem;
   color: var(--text);
   font-weight: 500;
-  font-size: 0.95rem;
-  margin-bottom: 1.6rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.9rem;
 }
 
 .tagline svg {
@@ -85,12 +85,12 @@
 .socials {
   display: flex;
   gap: 0.7rem;
-  margin-bottom: 1.9rem;
+  margin-bottom: 1rem;
 }
 
 .socials a {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 1px solid var(--border);
   display: flex;
@@ -118,8 +118,8 @@
   background: linear-gradient(135deg, var(--accent-2), var(--accent));
   color: #06222b;
   font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.8rem 1.6rem;
+  font-size: 0.88rem;
+  padding: 0.65rem 1.3rem;
   border-radius: var(--radius-sm);
   box-shadow: 0 10px 25px -8px var(--accent-glow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -135,8 +135,6 @@
   box-shadow: 0 14px 30px -8px var(--accent-glow);
 }
 
-/* ---------- Photo ---------- */
-
 .hero-photo {
   flex: 0 1 340px;
   display: flex;
@@ -145,8 +143,8 @@
 
 .photo-frame {
   position: relative;
-  width: 300px;
-  height: 380px;
+  width: clamp(160px, 20vw, 260px);
+  height: clamp(200px, 34vh, 320px);
   animation: floatY 5s ease-in-out infinite;
 }
 
@@ -187,7 +185,37 @@
   to { width: 100%; }
 }
 
-/* ---------- Loading skeleton ---------- */
+.about-section {
+  margin-bottom: 0.9rem;
+}
+
+.about-section .eyebrow {
+  margin-bottom: 0.2rem;
+}
+
+.about-section .bio {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  max-width: 55ch;
+}
+
+.about-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.about-email svg {
+  width: 18px;
+  height: 18px;
+}
 
 .hero-loading {
   flex-direction: column;
@@ -210,6 +238,10 @@
 
 @media (max-width: 880px) {
   .hero {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow: visible;
     padding-top: 5.5rem;
     justify-content: center;
   }
@@ -219,7 +251,30 @@
   }
 
   .photo-frame {
-    width: 230px;
-    height: 290px;
+    width: 200px;
+    height: 250px;
+  }
+
+  .about-section .bio {
+    -webkit-line-clamp: 4;
+  }
+}
+
+@media (max-height: 720px) and (min-width: 881px) {
+  .name {
+    font-size: clamp(1.6rem, 3.4vw, 2.1rem);
+  }
+
+  .role-line {
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .about-section .bio {
+    -webkit-line-clamp: 2;
+  }
+
+  .photo-frame {
+    height: clamp(170px, 26vh, 240px);
   }
 }

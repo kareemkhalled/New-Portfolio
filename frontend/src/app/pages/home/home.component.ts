@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AboutService } from '../../core/services/about-service';
-import { IAbout } from '../../models/about.model';
+import { IAbout } from '../../core/services/models/about.model';
 
 @Component({
   selector: 'app-home',

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ExperienceService } from '../../core/services/experience-service';
-import { IExperience } from '../../models/experience.model';
+import { IExperience } from '../../core/services/models/experience.model';
 
 @Component({
   selector: 'app-experience',

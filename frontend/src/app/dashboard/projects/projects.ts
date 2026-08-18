@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ProjectItem } from './project-item/project-item';
 import { AddProject } from './add-project/add-project';
 import { ProjectService } from '../../core/services/project-service';
-import { IProject } from '../../models/project.model';
+import { IProject } from '../../core/services/models/project.model';
 
 @Component({
   selector: 'app-projects',

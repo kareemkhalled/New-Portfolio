@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { AboutService } from '../../core/services/about-service';
-import { IAbout } from '../../models/about.model';
+import { IAbout } from '../../core/services/models/about.model';
 
 @Component({
   selector: 'app-about',
